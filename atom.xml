@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.yanwl.top</id>
+    <title>Yanwl</title>
+    <updated>2022-11-02T03:02:37.643Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.yanwl.top"/>
+    <link rel="self" href="https://www.yanwl.top/atom.xml"/>
+    <subtitle>面对芜杂世俗之事 一笑了之 了了有何不了</subtitle>
+    <logo>https://www.yanwl.top/images/avatar.png</logo>
+    <icon>https://www.yanwl.top/favicon.ico</icon>
+    <rights>All rights reserved 2022, Yanwl</rights>
+    <entry>
+        <title type="html"><![CDATA[BTC在MAC本地搭建私有（regtest）网络]]></title>
+        <id>https://www.yanwl.top/nvHd0x8yE/</id>
+        <link href="https://www.yanwl.top/nvHd0x8yE/">
+        </link>
+        <updated>2022-11-01T08:45:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1-下载安装包">1. 下载安装包</h2>
+<p>curl -O https://bitcoin.org/bin/bitcoin-core-0.21.0/bitcoin-0.21.0-osx64.tar.gz</p>
+<h2 id="2-解压包">2. 解压包</h2>
+<p>tar -zxf bitcoin-0.21.0-osx64.tar</p>
+<h2 id="3-把可执行文件转移到目标目录">3. 把可执行文件转移到目标目录</h2>
+<h3 id="31-创建目标目录">3.1. 创建目标目录</h3>
+<p>mkdir ~/Bitcoind</p>
+<h3 id="32-转移可执行文件到目标目录">3.2. 转移可执行文件到目标目录</h3>
+<p>cd bitcoin-0.21.0 &amp; &amp; mv bitcoin-0.21.0/bin/bitcoin* ~/Bitcoind</p>
+<h2 id="4-创建配置文件">4. 创建配置文件</h2>
+<p>cd ~/Bitcoind<br>
+vim bitcoin.conf<br>
+配置文件如下：</p>
+<blockquote>
+<p>regtest=1<br>
+server=1<br>
+rpcuser=xxxx<br>
+rpcpassword=xxxx<br>
+rpcallowip=0.0.0.0/0</p>
+</blockquote>
+<h2 id="5-创建数据存放目录">5. 创建数据存放目录</h2>
+<p>mkdir data</p>
+<h2 id="6-创建钱包">6. 创建钱包</h2>
+<p>因为现在不会自动创建钱包，所以必须要先创建钱包，否则在创建地址的时候会报错。<br>
+./bitcoin-wallet -chain=regtest  -datadir=数据存放目录绝对路径 -wallet=钱包名称 create</p>
+<h2 id="7-启动">7. 启动</h2>
+<p>./bitcoind -conf=配置文件绝对路径 -datadir=数据存放目录绝对路径 -walletdir=数据存放目录绝对路径/regtest/wallets/钱包名称</p>
+<h2 id="8-测试">8. 测试</h2>
+<p><font color="#A9A9A9">#查看网络状态</font><br>
+./bitcoind-cli -conf=配置文件绝对路径 getnetworkinfo<br>
+<font color="#A9A9A9">#查看所有命令</font><br>
+./bitcoin-cli --help</p>
+]]></content>
+    </entry>
+</feed>
